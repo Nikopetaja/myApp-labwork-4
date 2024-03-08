@@ -7,14 +7,14 @@ import {
   IonTabBar,
   IonTabButton,
   IonTabs,
-  setupIonicReact
+  setupIonicReact, IonSplitPane
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { ellipse, square, triangle } from 'ionicons/icons';
-import Tab1 from './pages/Tab1';
-import Tab2 from './pages/Tab2';
-import Tab3 from './pages/Tab3';¨
-import AuthService from './components/AuthService.js' 
+import Tabs from './components/Tabs';
+import Login from './pages/Login';
+import Registration from './pages/Registration';
+import AuthService from './components/AuthService'; 
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -41,26 +41,19 @@ const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonTabs>
-        <IonRouterOutlet>
+      <IonRouterOutlet>
           <Route path="/login" component={Login} exact />
+          <Route path="/register" component={Registration} exact />
           <Route
-            path="/tabs"
-            render={() => (AuthService.isAuthenticated ? <Tabs /> : <Redirect to="/login" />)}
-          />
-          <Route exact path="/" render={() => <Redirect to="/tabs" />} />
-          <Route exact path="/tab1">
-            <Tab1 />
-          </Route>
-          <Route exact path="/tab2">
-            <Tab2 />
-          </Route>
-          <Route path="/tab3">
-            <Tab3 />
-          </Route>
-          <Route exact path="/">
-            <Redirect to="/tab1" />
-          </Route>
-        </IonRouterOutlet>
+          path="/tabs"
+          render={() =>
+            AuthService.isAuthenticated() ? <Tabs /> : <Redirect to="/login" />
+          }
+        />
+        <Redirect exact from="/" to="/tabs" />
+      </IonRouterOutlet>
+
+
         <IonTabBar slot="bottom">
           <IonTabButton tab="tab1" href="/tab1">
             <IonIcon aria-hidden="true" icon={triangle} />

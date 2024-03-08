@@ -1,14 +1,14 @@
-// src/pages/Login.tsx
+// src/pages/Registration.tsx
 import React, { useState } from 'react';
 import { IonPage, IonContent, IonInput, IonButton } from '@ionic/react';
 import AuthService from '../components/AuthService';
 
-const Login: React.FC = () => {
+const Registration: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = async () => {
-    const result = await AuthService.login(email, password);
+  const handleRegister = async () => {
+    const result = await AuthService.register(email, password);
 
     // Inside handleLogin and handleRegister functions
     if (result.success) {
@@ -24,13 +24,13 @@ const Login: React.FC = () => {
   return (
     <IonPage>
       <IonContent className="ion-padding">
-        <h2>Login</h2>
+        <h2>Registration</h2>
         <IonInput type="email" placeholder="Email" value={email} onIonChange={(e) => setEmail(e.detail.value!)} />
         <IonInput type="password" placeholder="Password" value={password} onIonChange={(e) => setPassword(e.detail.value!)} />
-        <IonButton onClick={handleLogin}>Login</IonButton>
+        <IonButton onClick={handleRegister}>Register</IonButton>
       </IonContent>
     </IonPage>
   );
 };
 
-export default Login;
+export default Registration;
