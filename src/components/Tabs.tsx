@@ -1,9 +1,9 @@
-// src/components/Tabs.tsx
-import React from 'react';
-import { Route, Redirect, Switch } from 'react-router-dom';
-import Tab1 from '../pages/Tab1';
-import Tab2 from '../pages/Tab2';
-import Tab3 from '../pages/Tab3';
+// src/Tabs.tsx
+import React from "react";
+import { Route, Redirect, Switch } from "react-router-dom";
+import Tab1 from "./pages/Tab1";
+import Tab2 from "./pages/Tab2";
+import Tab3 from "./pages/Tab3";
 
 const Tabs: React.FC = () => (
   <Switch>

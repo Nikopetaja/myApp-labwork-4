@@ -1,42 +1,29 @@
-// AuthService.ts
-import { initializeApp } from 'firebase/app';  
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, AuthError } from 'firebase/auth';  
-import firebaseConfig from '../FirebaseConfig';
+// src/AuthService.ts
+import { initializeApp } from "firebase/app";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import firebaseConfig from "../FirebaseConfig";
 
-// Initialize Firebase if it's not already initialized
-if (!initializeApp.length) {
-  initializeApp(firebaseConfig);
-}
+initializeApp(firebaseConfig);
+
+const auth = getAuth();
 
 const AuthService = {
-  getCurrentUser: () => getAuth().currentUser,
-
-  isAuthenticated: () => {
-    // Add your logic to check if the user is authenticated
-    const user = getAuth().currentUser;
-    return user !== null;
-  },
-
   register: async (email: string, password: string) => {
     try {
-      await createUserWithEmailAndPassword(getAuth(), email, password);
+      await createUserWithEmailAndPassword(auth, email, password);
       return { success: true };
     } catch (error) {
-      return { success: false, error: (error as AuthError).message };
+      return { success: false, error: error.message };
     }
   },
 
   login: async (email: string, password: string) => {
     try {
-      await signInWithEmailAndPassword(getAuth(), email, password);
+      await signInWithEmailAndPassword(auth, email, password);
       return { success: true };
     } catch (error) {
-      return { success: false, error: (error as AuthError).message };
+      return { success: false, error: error.message };
     }
-  },
-
-  logout: async () => {
-    await signOut(getAuth());
   },
 };
 

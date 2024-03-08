@@ -1,8 +1,6 @@
-// src/pages/Tab1.tsx
-import React from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
-import './Tab2.css';
+// src/pages/Tab2.tsx
+import React from "react";
+import { IonPage, IonContent, IonHeader, IonToolbar, IonTitle } from "@ionic/react";
 
 const Tab2: React.FC = () => (
   <IonPage>
@@ -11,13 +9,8 @@ const Tab2: React.FC = () => (
         <IonTitle>Tab 2</IonTitle>
       </IonToolbar>
     </IonHeader>
-    <IonContent fullscreen>
-      <IonHeader collapse="condense">
-        <IonToolbar>
-          <IonTitle size="large">Tab 2</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <ExploreContainer name="Tab 2 page" />
+    <IonContent>
+      <h2>Content for Tab 2</h2>
     </IonContent>
   </IonPage>
 );

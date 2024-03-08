@@ -1,24 +1,20 @@
 // src/pages/Login.tsx
-import React, { useState } from 'react';
-import { IonPage, IonContent, IonInput, IonButton } from '@ionic/react';
-import AuthService from '../components/AuthService';
+import React, { useState } from "react";
+import { IonPage, IonContent, IonInput, IonButton } from "@ionic/react";
+import AuthService from './components/AuthService';
 
 const Login: React.FC = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
     const result = await AuthService.login(email, password);
 
-    // Inside handleLogin and handleRegister functions
     if (result.success) {
-        console.log('Login/Registration successful');
-    // Redirect to /tabs
-        window.location.href = '/tabs';
+      console.log("Login successful");
     } else {
-        console.error('Login/Registration failed:', result.error);
+      console.error("Login failed:", result.error);
     }
-  
   };
 
   return (
