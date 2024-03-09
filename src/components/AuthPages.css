@@ -1,0 +1,11 @@
+/* AuthPages.css */
+.auth-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  /* You can add more styles based on your preferences */
+  

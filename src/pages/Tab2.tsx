@@ -1,6 +1,6 @@
-// src/pages/Tab2.tsx
-import React from "react";
-import { IonPage, IonContent, IonHeader, IonToolbar, IonTitle } from "@ionic/react";
+// Tab2.tsx
+import React from 'react';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonPage } from '@ionic/react';
 
 const Tab2: React.FC = () => (
   <IonPage>
@@ -10,7 +10,8 @@ const Tab2: React.FC = () => (
       </IonToolbar>
     </IonHeader>
     <IonContent>
-      <h2>Content for Tab 2</h2>
+      {/* Your content for Tab 2 */}
+      <h2>Todo List in Tab 2</h2>
     </IonContent>
   </IonPage>
 );

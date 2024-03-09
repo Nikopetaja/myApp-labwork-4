@@ -8,10 +8,10 @@ import {
   IonTabButton,
   IonTabs, 
   IonLabel,
-  setupIonicReact
+  setupIonicReact,
+  IonIcon,
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { ellipse, square, triangle } from 'ionicons/icons';
 import Tabs from './components/Tabs';
 import Login from './pages/Login';
 import Register from './pages/Registration';
@@ -35,6 +35,7 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import { ellipse, square, triangle } from 'ionicons/icons';
 
 setupIonicReact();
 
@@ -58,15 +59,19 @@ const App: React.FC = () => (
           <Redirect exact from="/" to="/tabs" />
         </IonRouterOutlet>
 
+        {/* Define IonTabBar here */}
         <IonTabBar slot="bottom">
           <IonTabButton tab="tab1" href="/tabs/tab1">
-            <IonLabel>Tab 1</IonLabel>
+            <IonIcon icon={ellipse} />
+            <IonLabel>Home</IonLabel>
           </IonTabButton>
           <IonTabButton tab="tab2" href="/tabs/tab2">
-            <IonLabel>Tab 2</IonLabel>
+          <IonIcon icon={square} />
+            <IonLabel>To-do list</IonLabel>
           </IonTabButton>
           <IonTabButton tab="tab3" href="/tabs/tab3">
-            <IonLabel>Tab 3</IonLabel>
+          <IonIcon icon={triangle} />
+            <IonLabel>Contact</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>

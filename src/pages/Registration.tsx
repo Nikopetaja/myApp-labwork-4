@@ -1,18 +1,21 @@
-// src/pages/Register.tsx
+// Registration.tsx
 import React, { useState } from 'react';
-import { IonPage, IonContent, IonInput, IonButton } from '@ionic/react';
+import { IonPage, IonContent, IonInput, IonButton, IonRouterLink } from '@ionic/react';
 import AuthService from '../components/AuthService';
+import { useHistory } from 'react-router-dom'; // Import useHistory hook
+import '../components/AuthPages.css';
 
 const Register: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const history = useHistory(); // Initialize the useHistory hook
 
   const handleRegister = async () => {
     const result = await AuthService.register(email, password);
 
     if (result.success) {
       console.log('Registration successful');
-      // Redirect or perform other actions upon successful registration
+      history.push('/tabs/tab1'); // Use history.push to navigate to Tab 1 upon successful registration
     } else {
       console.error('Registration failed:', result.error);
     }
@@ -20,11 +23,12 @@ const Register: React.FC = () => {
 
   return (
     <IonPage>
-      <IonContent className="ion-padding">
+      <IonContent className="auth-page ion-padding">
         <h2>Register</h2>
         <IonInput type="email" placeholder="Email" value={email} onIonChange={(e) => setEmail(e.detail.value!)} />
         <IonInput type="password" placeholder="Password" value={password} onIonChange={(e) => setPassword(e.detail.value!)} />
-        <IonButton onClick={handleRegister}>Register</IonButton>
+        <IonButton expand="full" onClick={handleRegister}>Register</IonButton>
+        <IonRouterLink routerLink="/login">Already have an account? Login here.</IonRouterLink>
       </IonContent>
     </IonPage>
   );
